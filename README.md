@@ -1,18 +1,33 @@
-# Dosu-ai Dosu
+# Homebrew Dosu Tap
 
-## How do I install these formulae?
+Homebrew tap for the [Dosu CLI](https://github.com/dosu-ai/dosu-cli).
 
-`brew install dosu-ai/dosu/<formula>`
+## Installation
 
-Or `brew tap dosu-ai/dosu` and then `brew install <formula>`.
+```bash
+brew install dosu-ai/dosu/dosu
+```
 
-Or, in a `brew bundle` `Brewfile`:
+Or tap first:
 
-```ruby
-tap "dosu-ai/dosu"
-brew "<formula>"
+```bash
+brew tap dosu-ai/dosu
+brew install dosu
+```
+
+## Updating the Formula
+
+After a new release of dosu-cli:
+
+```bash
+./scripts/update-formula.sh <version>
+git add Formula/dosu.rb
+git commit -m "Update dosu to v<version>"
+git push
 ```
 
 ## Documentation
 
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+For dosu usage, see the [dosu-cli repository](https://github.com/dosu-ai/dosu-cli).
+
+For Homebrew help, run `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
