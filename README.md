@@ -17,30 +17,12 @@ brew install dosu
 
 ## Updating the Formula
 
-After a new release of dosu-cli:
+After a new release is published on [dosu-cli](https://github.com/dosu-ai/dosu-cli/releases), update the formula:
 
 ```bash
 ./scripts/update-formula.sh <version>
 git add Formula/dosu.rb
 git commit -m "Update dosu to v<version>"
-git push
-```
-
-## Updating the Formula (for maintainers)
-
-After a new release is published on [dosu-cli](https://github.com/dosu-ai/dosu-cli/releases), update the formula:
-
-```bash
-# Clone this repo
-git clone https://github.com/dosu-ai/homebrew-dosu.git
-cd homebrew-dosu
-
-# Run the update script with the new version
-./scripts/update-formula.sh 0.1.0
-
-# Commit and push
-git add Formula/dosu.rb
-git commit -m "Update dosu to v0.1.0"
 git push
 ```
 
