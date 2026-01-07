@@ -17,7 +17,7 @@ brew install dosu
 
 ## Updating the Formula
 
-After a new release of dosu-cli:
+After a new release is published on [dosu-cli](https://github.com/dosu-ai/dosu-cli/releases), update the formula:
 
 ```bash
 ./scripts/update-formula.sh <version>
@@ -25,6 +25,12 @@ git add Formula/dosu.rb
 git commit -m "Update dosu to v<version>"
 git push
 ```
+
+The script automatically:
+
+- Fetches the release archives from GitHub
+- Calculates SHA256 checksums for all platforms (macOS x86_64/arm64, Linux x86_64/arm64)
+- Updates the formula file
 
 ## Documentation
 
