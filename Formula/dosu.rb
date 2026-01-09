@@ -32,9 +32,7 @@ class Dosu < Formula
     bin.install "dosu"
 
     # Remove quarantine attribute on macOS to allow execution
-    if OS.mac?
-      system "/usr/bin/xattr", "-dr", "com.apple.quarantine", "#{bin}/dosu"
-    end
+    system "/usr/bin/xattr", "-dr", "com.apple.quarantine", "#{bin}/dosu" if OS.mac?
   end
 
   test do
