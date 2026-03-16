@@ -4,35 +4,39 @@
 class Dosu < Formula
   desc "CLI tool for Dosu"
   homepage "https://github.com/dosu-ai/dosu-cli"
-  version "0.1.0-alpha"
+  version "0.1.2-alpha"
 
   on_macos do
     on_intel do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Darwin_x86_64.tar.gz"
-      sha256 "fc94a8a1f9d0f7301bf65258e1ec74b75f802db0920fbd5dc70516796c3dec82"
+      sha256 "08d02b9ae6330a4d8f097638de597c04078bce58ed0b6540bd2a53f2468dee85"
     end
     on_arm do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Darwin_arm64.tar.gz"
-      sha256 "7d50eae0bbb69bfb09cd1ed1f1ce8d35c97d8136fd935cfdb2504e4c0394c86e"
+      sha256 "e5a345bdcd217b2d4faf0312676b272ad09a3f21fb501f781d1e5b2f76f2243c"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Linux_x86_64.tar.gz"
-      sha256 "4e174bb3259386a8f1a7c88366e77c0682a502c07b0e3f1dd934908601b6b12b"
+      sha256 "59c43d8129fd38da2db311409a2eb1bd5611437fc1bada263ec28e4c787d1442"
     end
     on_arm do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Linux_arm64.tar.gz"
-      sha256 "9a5031c3e77f6f39c5e9c701ab463e97946a4442de852f1a669bdc6f62143e43"
+      sha256 "273f9608f45b02e8bc3c5b302f88f310be834384c8a81758b3f7392220efe8a7"
     end
   end
 
   def install
     bin.install "dosu"
+  end
 
-    # Remove quarantine attribute on macOS to allow execution
-    system "/usr/bin/xattr", "-dr", "com.apple.quarantine", "#{bin}/dosu" if OS.mac?
+  def post_install
+    return unless OS.mac?
+
+    ohai "Removing quarantine attribute..."
+    system "/usr/bin/xattr", "-dr", "com.apple.quarantine", "#{bin}/dosu"
   end
 
   test do
