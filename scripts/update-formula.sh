@@ -108,13 +108,6 @@ class Dosu < Formula
     bin.install "dosu"
   end
 
-  def post_install
-    return unless OS.mac?
-
-    ohai "Removing quarantine attribute..."
-    system "/usr/bin/xattr", "-dr", "com.apple.quarantine", "#{bin}/dosu"
-  end
-
   test do
     system "#{bin}/dosu", "--version"
   end
