@@ -4,35 +4,43 @@
 class Dosu < Formula
   desc "CLI tool for Dosu"
   homepage "https://github.com/dosu-ai/dosu-cli"
-  version "0.1.6"
+  version "0.1.7"
 
   on_macos do
     on_intel do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Darwin_x86_64.tar.gz"
-      sha256 "7f980eb89cbebfa6b1706b45aa6463fdca7292e7e3d8b346c563904cfd210363"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu-darwin-x64.tar.gz"
+      sha256 "1f54c4fe28cf94f837f75e0b416704a560a0a7f5460d26b30f3a301cabd86256"
     end
     on_arm do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Darwin_arm64.tar.gz"
-      sha256 "263913f8bcd311082eb0ee1fd0495ca68b93bd2ce19adc993ea5aed5a12ca38e"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu-darwin-arm64.tar.gz"
+      sha256 "1008815a659c44525a2cb803b37b0d0cbdb499ac1ebe7679fb4641cc46cd92dd"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Linux_x86_64.tar.gz"
-      sha256 "3758c46c6fcb673c0a0aa04ef0d24954e299bac660c157b38f4990031e306132"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu-linux-x64.tar.gz"
+      sha256 "447a67dcfb7ff836f45908264d411a94354e42f48ede9835f0c2988a7d83df94"
     end
     on_arm do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu_Linux_arm64.tar.gz"
-      sha256 "1737431503903cdd658cfd0c2f07cef5433bc37d887a5359cd66c64f4972b520"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{version}/dosu-linux-arm64.tar.gz"
+      sha256 "5148328e2ec4b0a21cbe2ed9446f062a2bef7ad7da5ae7ce9f91502033ad8836"
     end
   end
 
   def install
-    bin.install "dosu"
+    executable = if File.file?("dosu")
+      "dosu"
+    else
+      Dir["dosu-*"].find { |path| File.file?(path) }
+    end
+
+    odie "Could not find a dosu executable in the extracted archive" unless executable
+
+    bin.install executable => "dosu"
   end
 
   test do
-    system "#{bin}/dosu", "--version"
+    assert_match version.to_s, shell_output("#{bin}/dosu --version")
   end
 end

@@ -28,8 +28,9 @@ git push
 
 The script automatically:
 
-- Fetches the release archives from GitHub
-- Calculates SHA256 checksums for all platforms (macOS x86_64/arm64, Linux x86_64/arm64)
+- Resolves the Homebrew assets for macOS x86_64/arm64 and Linux x86_64/arm64
+- Uses the GitHub Release API for the current Bun-based release format
+- Hashes the asset directly if the Release API omits a `sha256` digest
 - Updates the formula file
 
 ## Documentation
