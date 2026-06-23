@@ -40,22 +40,22 @@ def resolve_release_assets(version: str):
         (
             "DARWIN_X86",
             "Darwin x86_64",
-            "dosu-darwin-x64.tar.gz",
+            "dosu-darwin-x64-homebrew.tar.gz",
         ),
         (
             "DARWIN_ARM",
             "Darwin arm64",
-            "dosu-darwin-arm64.tar.gz",
+            "dosu-darwin-arm64-homebrew.tar.gz",
         ),
         (
             "LINUX_X86",
             "Linux x86_64",
-            "dosu-linux-x64.tar.gz",
+            "dosu-linux-x64-homebrew.tar.gz",
         ),
         (
             "LINUX_ARM",
             "Linux arm64",
-            "dosu-linux-arm64.tar.gz",
+            "dosu-linux-arm64-homebrew.tar.gz",
         ),
     ]
 
