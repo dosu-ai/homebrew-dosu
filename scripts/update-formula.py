@@ -95,26 +95,25 @@ def render_formula(version: str, resolved_assets):
 class Dosu < Formula
   desc "CLI tool for Dosu"
   homepage "https://github.com/dosu-ai/dosu-cli"
-  version "{version}"
 
   on_macos do
     on_intel do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{{version}}/{values['DARWIN_X86_NAME']}"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v{version}/{values['DARWIN_X86_NAME']}"
       sha256 "{values['DARWIN_X86_SHA']}"
     end
     on_arm do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{{version}}/{values['DARWIN_ARM_NAME']}"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v{version}/{values['DARWIN_ARM_NAME']}"
       sha256 "{values['DARWIN_ARM_SHA']}"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{{version}}/{values['LINUX_X86_NAME']}"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v{version}/{values['LINUX_X86_NAME']}"
       sha256 "{values['LINUX_X86_SHA']}"
     end
     on_arm do
-      url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{{version}}/{values['LINUX_ARM_NAME']}"
+      url "https://github.com/dosu-ai/dosu-cli/releases/download/v{version}/{values['LINUX_ARM_NAME']}"
       sha256 "{values['LINUX_ARM_SHA']}"
     end
   end
