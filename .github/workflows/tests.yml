@@ -9,8 +9,11 @@ on:
 jobs:
   test-bot:
     strategy:
+      # ubuntu-latest, not ubuntu-22.04: Homebrew's `brew doctor` (run by
+      # test-bot --only-setup) fails hard on 22.04's glibc 2.35, which killed
+      # every push run before any formula was ever checked.
       matrix:
-        os: [ ubuntu-22.04, macos-15-intel, macos-26 ]
+        os: [ ubuntu-latest, macos-15-intel, macos-26 ]
     runs-on: ${{ matrix.os }}
     permissions:
       actions: read
@@ -36,12 +39,18 @@ jobs:
       - run: brew test-bot --only-setup
 
       - run: brew test-bot --only-tap-syntax
-      - run: brew test-bot --only-formulae
-        if: github.event_name == 'pull_request'
 
-      - name: Upload bottles as artifact
-        if: always() && github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
-        with:
-          name: bottles_${{ matrix.os }}
-          path: '*.bottle.*'
+      # This is a binary tap: formulae unpack prebuilt release tarballs, so
+      # there are no bottles to build and test-bot's --only-formulae/bottle
+      # machinery has nothing real to do. The check that matters is the one a
+      # user performs — install each formula from the tap and run its test
+      # block — on every push and PR, not just PRs.
+      - name: Install and test every formula in the tap
+        run: |
+          set -euo pipefail
+          tap_dir="$(brew --repository "$GITHUB_REPOSITORY")"
+          for formula in "$tap_dir"/Formula/*.rb; do
+            name="$(basename "$formula" .rb)"
+            brew install --verbose "$GITHUB_REPOSITORY/$name"
+            brew test --verbose "$GITHUB_REPOSITORY/$name"
+          done
