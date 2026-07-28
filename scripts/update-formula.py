@@ -35,7 +35,7 @@ def hash_asset(url: str):
 
 
 def resolve_release_assets(version: str):
-    release_api_url = f"https://api.github.com/repos/dosu-ai/dosu-cli/releases/tags/v#{{DOSU_VERSION}}"
+    release_api_url = f"https://api.github.com/repos/dosu-ai/dosu-cli/releases/tags/v{version}"
     platforms = [
         (
             "DARWIN_X86",
