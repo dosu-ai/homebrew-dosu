@@ -1,7 +1,6 @@
 class Decant < Formula
   desc "Analyze Claude Code and Codex sessions: tokens, context windows, and cost"
   homepage "https://github.com/dosu-ai/decant"
-  version "0.2.0"
   license "Apache-2.0"
 
   on_macos do
