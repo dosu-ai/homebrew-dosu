@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 class Dosu < Formula
-  DOSU_VERSION = "0.46.0"
+  DOSU_VERSION = "0.46.1"
 
   desc "CLI tool for Dosu"
   homepage "https://github.com/dosu-ai/dosu-cli"
@@ -10,22 +10,22 @@ class Dosu < Formula
   on_macos do
     on_intel do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{DOSU_VERSION}/dosu-darwin-x64-homebrew.tar.gz"
-      sha256 "dbf9c3e0a1ff63c7516c6eda0fe6144b9561d2c5e1cc063db4f1f4110ab3373b"
+      sha256 "b63b0d695712bdc634b6ab1b34fe7469813842e2bef8c64310af83de12007c45"
     end
     on_arm do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{DOSU_VERSION}/dosu-darwin-arm64-homebrew.tar.gz"
-      sha256 "6178d29f65519e6bc239d08c454f8085e853da4154c507e1bb26e00d4cf56d40"
+      sha256 "19a0cc879f36faaff675437c5b86574611aff2c850955e2290b69c6a6076d776"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{DOSU_VERSION}/dosu-linux-x64-homebrew.tar.gz"
-      sha256 "9f2953bea9a3b746ef50cf8c34fb018d380543cc37326b1f9810d6279fccf53f"
+      sha256 "03c6585bd1a2a25005170db806214c9a60db5193732ec370410acad84ef5de0f"
     end
     on_arm do
       url "https://github.com/dosu-ai/dosu-cli/releases/download/v#{DOSU_VERSION}/dosu-linux-arm64-homebrew.tar.gz"
-      sha256 "b7c607af6744dbdf3524fb5e8eead7ce6f2c9e31fb14183bb0676be6f98ec27c"
+      sha256 "c368d16991727634187deae9f8514607e4811fb29fb1971607a872a46e2f8aaa"
     end
   end
 
