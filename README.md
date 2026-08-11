@@ -1,18 +1,19 @@
 # Homebrew Dosu Tap
 
-Homebrew tap for the [Dosu CLI](https://github.com/dosu-ai/dosu-cli).
+Homebrew tap for the [Dosu CLI](https://github.com/dosu-ai/dosu-cli) and [decant](https://github.com/dosu-ai/decant).
 
 ## Installation
 
 ```bash
-brew install dosu-ai/dosu/dosu
+brew install dosu-ai/dosu/dosu     # or: brew install dosu-ai/dosu/decant
 ```
 
-Or tap first:
+To use tapped short names:
 
 ```bash
 brew tap dosu-ai/dosu
-brew install dosu
+brew trust dosu-ai/dosu   # Homebrew 6.0+ only — skip on older versions
+brew install dosu         # or: brew install decant
 ```
 
 ## Updating the Formula
