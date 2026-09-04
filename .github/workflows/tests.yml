@@ -7,11 +7,43 @@ on:
   pull_request:
 
 jobs:
-  test-bot:
+  tap-syntax:
+    # Full tap syntax runs style and readall for every OS and architecture.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cache Homebrew Bundler RubyGems
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: tap-syntax-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: tap-syntax-rubygems-
+
+      - run: brew test-bot --only-cleanup-before
+
+      - run: brew test-bot --only-setup
+
+      - run: brew test-bot --only-tap-syntax
+
+  formula-test:
+    needs: tap-syntax
     strategy:
+      fail-fast: false
       matrix:
         os: [ ubuntu-latest, macos-15-intel, macos-26 ]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     permissions:
       actions: read
       checks: read
@@ -30,12 +62,6 @@ jobs:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
           key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
           restore-keys: ${{ matrix.os }}-rubygems-
-
-      - run: brew test-bot --only-cleanup-before
-
-      - run: brew test-bot --only-setup
-
-      - run: brew test-bot --only-tap-syntax
 
       - name: Install and test every formula in the tap
         run: |
