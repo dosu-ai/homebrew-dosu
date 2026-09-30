@@ -5,23 +5,23 @@ class Decant < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.8.0/decant-darwin-arm64.tar.gz"
-      sha256 "ad95c8f5368c3e0eee377b4841bd31def49dafe050afe36081b36363c65e936a"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.9.0/decant-darwin-arm64.tar.gz"
+      sha256 "307f86699f73d1df50a402e8877bc6dbdff1dfdd899307544ebc3e79f35f3cc5"
     end
     on_intel do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.8.0/decant-darwin-x64.tar.gz"
-      sha256 "f61732f9495594543f085655379913535829d49b4cc8da851c70d84644c5f84d"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.9.0/decant-darwin-x64.tar.gz"
+      sha256 "170128c5f99e1c117e3724d137a441f6b1c75ad7aa6e314cde5bde20f0462a29"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.8.0/decant-linux-arm64.tar.gz"
-      sha256 "ea95f5aeba17abe4551cee2bef1a92ede65633c4813ed7085d40a79afba7c145"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.9.0/decant-linux-arm64.tar.gz"
+      sha256 "f510812645e0e8eb6eda371356fc55eda2cdd3f0437b51f40175a056ec71587c"
     end
     on_intel do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.8.0/decant-linux-x64.tar.gz"
-      sha256 "4378de7df0417363b5b2bc5cfbbbff8a47ea0cbe58eaf16f023ef701ed302f91"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.9.0/decant-linux-x64.tar.gz"
+      sha256 "06cc238b51dd58ea772c01916f848455cd73cbe8e2384d3e6b3458d1935d7365"
     end
   end
 
