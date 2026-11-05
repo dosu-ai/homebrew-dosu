@@ -1,27 +1,27 @@
 class Decant < Formula
-  desc "Analyze Claude Code and Codex sessions: tokens, context windows, and cost"
+  desc "Analyze AI coding agent sessions: tokens, context windows, and cost"
   homepage "https://github.com/dosu-ai/decant"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.12.1/decant-darwin-arm64.tar.gz"
-      sha256 "b1e1b27c64d9649e687b2dceb43e73c84106bfa13f9ace8de4b6dcf6b8aff97e"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.13.0/decant-darwin-arm64.tar.gz"
+      sha256 "b513f942da97327e2c137f87014fb7c40af1f36aad21a8fa8ee83065cce341a1"
     end
     on_intel do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.12.1/decant-darwin-x64.tar.gz"
-      sha256 "204e62f4b628298ecd01b4fe287ed00caf98ccf616241dda1511695347848472"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.13.0/decant-darwin-x64.tar.gz"
+      sha256 "44b63aa2b36b506e2de4cd408030af74a9a62b7983dcf403f8a824d03a9b3320"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.12.1/decant-linux-arm64.tar.gz"
-      sha256 "fff90f58e13698a69723848728d27245a4365374d15324448b69baf5f4c038a3"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.13.0/decant-linux-arm64.tar.gz"
+      sha256 "f4cc46c1939a8799a62e46601e5bfa9a948d64591fe624667d42e7423d9333de"
     end
     on_intel do
-      url "https://github.com/dosu-ai/decant/releases/download/v0.12.1/decant-linux-x64.tar.gz"
-      sha256 "de1f92004d43729dc6c5bb491980589ee8781eb407814fd338f4047558953654"
+      url "https://github.com/dosu-ai/decant/releases/download/v0.13.0/decant-linux-x64.tar.gz"
+      sha256 "ca57936e0dd2da70ecd86da2058431344fe76b0abfe05b86c989461fa1523757"
     end
   end
 
